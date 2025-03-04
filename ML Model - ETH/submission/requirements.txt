@@ -1,0 +1,8 @@
+numpy
+pandas
+scikit-learn==1.0.2
+lightgbm==4.2.0
+catboost==1.2.7
+xgboost==2.0.3
+joblib==1.4.2
+polars==0.18.3
