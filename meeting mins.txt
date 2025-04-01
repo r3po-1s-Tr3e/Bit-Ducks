@@ -1,0 +1,8 @@
+data was non stationary, but when we subtracted it with previous day close and it became stationary
+
+data showed trends of persistant volitility (indicated by high beta[1] in garch and high correlation to monthly varioance in har)
+
+data showed high effect of previous day volatility to predict current day;s volatility (high coeff in har)
+this also explains why data became stationary by subtracting previous day close values
+
+there is heteroscadescity and autocorrelation
