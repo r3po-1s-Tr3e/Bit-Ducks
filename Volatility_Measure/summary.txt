@@ -1,0 +1,78 @@
+GARCH(1,1) Model Summary:
+                     Constant Mean - GARCH Model Results
+==============================================================================
+Dep. Variable:                Returns   R-squared:                       0.000
+Mean Model:             Constant Mean   Adj. R-squared:                  0.000
+Vol Model:                      GARCH   Log-Likelihood:               -4955.61
+Distribution:                  Normal   AIC:                           9919.23
+Method:            Maximum Likelihood   BIC:                           9941.46
+                                        No. Observations:                 1917
+Date:                Tue, Apr 01 2025   Df Residuals:                     1916
+Time:                        11:16:54   Df Model:                            1
+                                Mean Model
+==========================================================================
+                 coef    std err          t      P>|t|    95.0% Conf. Int.
+--------------------------------------------------------------------------
+mu             0.2197  6.886e-02      3.191  1.418e-03 [8.478e-02,  0.355]
+                             Volatility Model
+==========================================================================
+                 coef    std err          t      P>|t|    95.0% Conf. Int.
+--------------------------------------------------------------------------
+omega          0.4505      0.173      2.599  9.347e-03   [  0.111,  0.790]
+alpha[1]       0.0934  4.305e-02      2.169  3.010e-02 [8.990e-03,  0.178]
+beta[1]        0.8748  3.733e-02     23.432 1.996e-121   [  0.802,  0.948]
+==========================================================================
+
+Covariance estimator: robust
+
+Insights from the GARCH(1,1) model:
+- The GARCH model estimates the time-varying volatility of BTC/USD daily returns.
+- The summary provides coefficients for the mean model, the volatility model (GARCH terms), and diagnostics.
+- The 'volatility' part of the summary shows the estimated coefficients for the GARCH equation:
+  - 'omega': The constant term in the variance equation.
+  - 'alpha[1]': The coefficient of the lagged squared residual (the ARCH term), indicating the impact of past shocks on current volatility.   
+  - 'beta[1]': The coefficient of the lagged conditional variance (the GARCH term), indicating the persistence of volatility.
+- A higher 'alpha[1]' suggests that volatility is more sensitive to recent market events.
+- A higher 'beta[1]' suggests that volatility shocks tend to persist for a longer time.
+- The plot visualizes how the estimated volatility changes over time. You can observe periods of high and low volatility.
+C:\Users\hryad\Desktop\iitm\Bit Ducks\Bit-Ducks\Volatility_Measure\vol_analysis.py:54: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy    
+  X_har['Constant'] = 1
+
+HAR Model Summary:
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:               RV_Daily   R-squared:                       0.597
+Model:                            OLS   Adj. R-squared:                  0.596
+Method:                 Least Squares   F-statistic:                     932.8
+Date:                Tue, 01 Apr 2025   Prob (F-statistic):               0.00
+Time:                        11:17:59   Log-Likelihood:                -3581.5
+No. Observations:                1895   AIC:                             7171.
+Df Residuals:                    1891   BIC:                             7193.
+Df Model:                           3
+Covariance Type:            nonrobust
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+RV_Daily     426.6635      8.395     50.822      0.000     410.199     443.128
+RV_Weekly     39.6704     19.729      2.011      0.044       0.978      78.363
+RV_Monthly   190.3027     34.126      5.577      0.000     123.375     257.230
+Constant       1.5110      0.050     30.467      0.000       1.414       1.608
+==============================================================================
+Omnibus:                     1499.526   Durbin-Watson:                   1.867
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           327948.485
+Skew:                          -2.786   Prob(JB):                         0.00
+Kurtosis:                      67.206   Cond. No.                         984.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+Insights from the HAR Model:
+- The HAR model predicts daily volatility based on the average realized volatility over the past day, week, and month.
+- The coefficients in the summary indicate the relationship between past realized volatility at different frequencies and the current daily volatility.
+- Positive coefficients suggest that higher past volatility at that frequency tends to lead to higher current volatility.
+- The R-squared value indicates the proportion of the variance in daily volatility that is explained by the HAR model.
