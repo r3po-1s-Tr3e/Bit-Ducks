@@ -7,10 +7,10 @@ BASE_URL = "https://fapi.binance.com/fapi/v1/klines"
 
 # Parameters
 symbol = "BTCUSDT"
-interval = "1d"
+interval = "2h"
 limit = 1000  # Max limit per request
 start_time = int(pd.Timestamp("2020-01-01").timestamp() * 1000)
-end_time = int(pd.Timestamp("2024-12-31").timestamp() * 1000)  # Until Dec 2023
+end_time = int(pd.Timestamp("2023-12-31").timestamp() * 1000)  # Until Dec 2023
 
 # Empty list to store data
 all_klines = []
